@@ -32,14 +32,14 @@ body {
 }
 
 .wrapper {
-	max-width: 860px;
+	max-width: 1050px;
 	margin: 0 auto;
 	width: 90%;
 }
 
 a {
 	text-decoration: none;
-	font-size: 1.3rem;
+	font-size: 1.8rem;
 	color: #C0B283;
 }
 
@@ -66,8 +66,8 @@ p, a, h3 {
 	color: #555243;
 }
 
-p{
-	font-size: 1.4rem;
+p {
+	font-size: 1.8rem;
 	line-height: 2;
 }
 
@@ -270,30 +270,32 @@ header a:hover::after {
 		&:hover .overlay {
 			opacity: 1;
 		}
-		// .overlay {
-		// 	position: absolute;
-		// 	background: rgba(224,223,213,0.7);
-		// 	top: 0;
-		// 	bottom: 0;
-		// 	right: 0;
-		// 	left: 0;
-		// 	display: flex;
+		.overlay {
+			position: absolute;
+			background: rgba(224,223,213,0.7);
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			display: flex;
 		// 	flex-direction: column;
-		// 	align-items: flex-start;
-		// 	opacity: 0;
-		// 	padding: 10px;
+			align-items: flex-end;
+			justify-content: flex-start;
+			opacity: 0;
+			padding: 10px;
+			transition: opacity .5s;
 		// 	h3 {
 		// 		font-size: 5rem;
 		// 		color: white;
 		// 		margin: 0;
 		// 		text-align: left;
 		// 	}
-		// 	p {
-		// 		font-size: 2rem;
-		// 		color: white;
-		// 		padding: 0px 10px;
-		// 		margin-top: 5px;
-		// 	}
+			p {
+				font-size: 7rem;
+				color: white;
+				padding: 0px 10px;
+				margin: 5px;
+			}
 		// 	a {
 		// 		font-size: 2rem;
 		// 		color: white;
@@ -310,7 +312,7 @@ header a:hover::after {
 		// 		&:hover::after {
 		// 			width: 100%;
 		// 		}
-		// 	}
+			}
 		}
 	}
 	figure.full {
@@ -377,14 +379,43 @@ a.underline {
 	height: 100vh;
 	background-color: rgba(0,0,0,0.9);
 }
+
 .modal.modalVisible {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding: 20px 0;
 }
 
 .modalContent {
-	width: 90%;
+	width: 100%;
+}
+
+.modalCenter {
+	display: flex;
+	flex-direction: column;
+}
+
+.modalText {
+	text-align: left;
+	padding: 5px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.modalTitle {
+	width: 100%;
+	margin: 0;
+}
+
+.modal p {
+	margin: 0;
+}
+
+.modalTitle, .modalPrice, .modalDimensions {
+	color: #D3D3D3;
 }
 
 .currentImage {
@@ -400,22 +431,12 @@ a.underline {
 	right: 15px;
 	cursor: pointer;
 	width: 45px;
-	opacity: 0.3;
-	&:hover {
-		opacity: 1;
-	}
 }
 
 .arrow{
 	margin: 0 20px;
 	cursor: pointer;
-	opacity: 0.3;
-	&:hover {
-		opacity: 1;
-	}
 }
-
-
 
 .arrow img {
 	width: 40px;
@@ -521,6 +542,7 @@ a.underline {
 form {
 	display: flex;
 	flex-direction: column;
+	width: 50%;
 	input {
 		border: none;
 		border-left: 1px solid black;
@@ -571,6 +593,8 @@ input[type=submit] {
 	font-size: 1.4rem;
 	transition: all .3s;
 	text-align: left;
+	// border: 1px solid black;
+	background: white;
 	&:hover {
 		background: #C1C070;
 		color: white;
@@ -578,6 +602,11 @@ input[type=submit] {
 	}
 }
 
+@media (max-width: 835px) {
+	.gallery figure .overlay p {
+		font-size: 3.5rem;
+	}
+}
 
 @media (max-width: 767px) {
 	.title {
@@ -713,6 +742,10 @@ input[type=submit] {
 		}
 	}
 
+	.modalTitle {
+		font-size: 2.8rem;
+	}
+
 	.process {
 		padding: 65px 0;
 		.wrapper {
@@ -741,10 +774,17 @@ input[type=submit] {
 	.contact {
 		padding: 65px 0;
 	}
+	
+	form {
+		width: 100%;
+	}
 
 }
 
 @media (max-width: 480px) {
+	a, p {
+		font-size: 1.5rem;
+	}
 
 	.gallery {
 		figure.half {
