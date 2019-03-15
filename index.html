@@ -140,7 +140,7 @@
 						</figure>
 					</div>
 					<div class="column">
-						<figure class="full purchse">
+						<figure class="full purchase">
 							<img src="assets/charcuterie_2.jpg" alt="Circular maple charcuterie board with two butterfly joints closing a crack." class="galleryImage" title="charcuterie">
 							<div class="overlay">
 								<p>More Info</p>
@@ -191,10 +191,10 @@
 					<div class="arrowLeft arrow">
 						<img src="assets/arrowleft.svg" alt="">
 					</div>
-					<div class="modalCenter">
+					<!-- <div class="modalCenter"> -->
 						<div class="modalContent">
 							<img class="currentImage">
-						</div>
+						<!-- </div> -->
 							<div class="modalText">
 								<p class="modalPrice"></p>
 								<p class="modalDimensions"></p>
@@ -276,81 +276,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smooth-scroll/2.1.2/jquery.smooth-scroll.min.js"></script>
-<script>
-    $(function() {
-
- 		$('a').smoothScroll();
-
- 		// Script to show or hide elements in the gallery section
- 		
-	    $('a.purchase').on('click', function(){
-	    	$('a.purchase').addClass('underline');
-	    	$('figure.purchase').removeClass('hide');
-	    	$('figure.sold').addClass('hide');
-	    	$('a.all, a.sold').removeClass('underline');
-	    });
-
-	    $('a.sold').on('click', function() {
-	    	$('a.sold').addClass('underline');
-	    	$('figure.sold').removeClass('hide');
-	    	$('figure.purchase').addClass('hide');
-	    	$('a.purchase, a.all').removeClass('underline');
-	    });
-
-	    $('a.all').on('click', function(){
-	    	$('.gallery figure').removeClass('hide');
-	    	$(this).addClass('underline');
-	    	$('a.purchase, a.sold').removeClass('underline');
-	    });
-
-	    // Script to hide and show hamburger icon or drop down menu
-
-	    $('.menu').on('click', function() {
-				$('nav.dropdown').addClass('displayMenu');
-				$('.exit').addClass('visible');
-				$('.about').addClass('shift');
-				$('.menu').addClass('disappear');
-		});
-
-		$('.dropdown a').on('click', function() {
-				$('nav.dropdown').removeClass('displayMenu');
-				$('.exit').removeClass('visible');
-				$('.about').removeClass('shift');
-				$('.menu').removeClass('disappear');
-		});
-
-		$('.exit').on('click', function() {
-			$('nav.dropdown').removeClass('displayMenu');
-			$('.exit').removeClass('visible');
-			$('.about').removeClass('shift');
-			$('.menu').removeClass('disappear');
-		});
-
-		// Script to change color of Menu/hamburger icon and background depending on where it is on the screen
-
-		$(document).scroll(function() {
-			const position1 = $('header').offset().top;
-			const position2 = $('.about').offset().top;
-			const position3 = $('.process').offset().top;
-			const position4 = $('.contact').offset().top;
-			const scrollPos = $(document).scrollTop();
-
-			if (scrollPos === 0 || scrollPos < position2) {
-				$('.headerTop').addClass('transparent').removeClass('white');
-				$('.menu').addClass('transparent').removeClass("white");
-			} else if (scrollPos >= position2 && scrollPos < position3) {
-				$('.headerTop').addClass('white').removeClass("transparent black");
-				$('.menu').addClass("white").removeClass("transparent black");
-			} else if (scrollPos >= position3 && scrollPos < position4) {
-				$('.headerTop').removeClass('white').addClass("black");
-				$('.menu').removeClass('white').addClass("black");
-			} else if (scrollPos >= position4) {
-				$('.menu').removeClass('black').addClass("white");
-				$('.headerTop').removeClass('black').addClass("white");	
-			}
-		});
-	});
-	</script>
-	<script src="scripts/script.js"></script>
+<script src="scripts/script.js"></script>
 </body>
 </html>
