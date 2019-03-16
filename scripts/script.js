@@ -15,7 +15,7 @@ const $all = $("a.all");
 const $menu = $(".menu");
 const $figurePurchase = $("figure.purchase");
 const $figureSold = $("figure.sold");
-const $dropDown = $("nav.dropDown");
+const $dropDown = $("nav.dropdown");
 const $exit = $(".exit");
 const $about = $(".about");
 const $headerTop = $(".headerTop");
@@ -209,13 +209,13 @@ app.init = () => {
   // Script to change color of Menu/hamburger icon and background depending on where it is on the screen
 
   $(document).scroll(function() {
-    const position1 = $header.offset().top;
-    const position2 = $about.offset().top;
-    const position3 = $process.offset().top;
-    const position4 = $contact.offset().top;
+    const position2 = $about.offset().top - 60;
+    const position3 = $process.offset().top -60;
+    const position4 = $contact.offset().top -60;
     const scrollPos = $(document).scrollTop();
 
     if (scrollPos === 0 || scrollPos < position2) {
+      console.log("true");
       $headerTop.addClass("transparent").removeClass("white");
       $menu.addClass("transparent").removeClass("white");
     } else if (scrollPos >= position2 && scrollPos < position3) {
