@@ -9,9 +9,9 @@ const $arrowLeft = $(".arrowLeft");
 const $modalTitle = $(".modalTitle");
 const $modalPrice = $(".modalPrice");
 const $modalDimensions = $(".modalDimensions");
-const $purchase = $("a.purchase");
-const $sold = $("a.sold");
-const $all = $("a.all");
+const $purchase = $("button.purchase");
+const $sold = $("button.sold");
+const $all = $("button.all");
 const $menu = $(".menu");
 const $figurePurchase = $("figure.purchase");
 const $figureSold = $("figure.sold");
@@ -119,15 +119,30 @@ app.arrowRight = () => {
     // Add "thisImage" class to current image
     $($images[current + 1]).addClass("thisImage");
   });
+  
+};
+
+app.keyboard = () => {
   // tigger arrowRight and arrowLeft functions when the right or left arrow on the keyboard is pressed
-  $("body").keydown(function(e) {
+  $("body").keydown(function (e) {
     if (e.which === 37) {
       $arrowLeft.trigger("click");
     } else if (e.which === 39) {
       $arrowRight.trigger("click");
     }
   });
-};
+}
+
+app.swipping = () => {
+  $modal.swipe({
+    swipeRight: function () {
+      $arrowLeft.trigger("click");
+    },
+    swipeLeft: function() {
+      $arrowRight.trigger("click")
+    }
+  })
+}
 
 app.init = () => {
   $overlay.on("click", function() {
@@ -159,6 +174,8 @@ app.init = () => {
     app.arrowLeft();
     app.arrowRight();
     app.keyboard();
+    app.swipping();
+
   });
 
   // Script to show or hide elements in the gallery section
@@ -215,7 +232,6 @@ app.init = () => {
     const scrollPos = $(document).scrollTop();
 
     if (scrollPos === 0 || scrollPos < position2) {
-      console.log("true");
       $headerTop.addClass("transparent").removeClass("white");
       $menu.addClass("transparent").removeClass("white");
     } else if (scrollPos >= position2 && scrollPos < position3) {
@@ -229,9 +245,14 @@ app.init = () => {
       $headerTop.removeClass("black").addClass("white");
     }
   });
+  $(document).one("touchstart", () => {
+    $("body").removeClass("hoverOn");
+  });
 };
 
 $(function() {
   app.init();
-  $anchor.smoothScroll();
+  $anchor.smoothScroll({
+    speed: 1200,
+  });
 });
